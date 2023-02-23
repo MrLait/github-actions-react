@@ -22,6 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get build project
-        - uses: actions/download-artifact@v3
-          with:
+        uses: actions/download-artifact@v3
+        with:
           name: build-files
