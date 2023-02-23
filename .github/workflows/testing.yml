@@ -12,3 +12,5 @@ jobs:
         uses: actions/checkout@v3
       - name: Instal react dependencies
         run: npm ci
+      - name: Test application
+        run: npm run test
