@@ -41,21 +41,21 @@ jobs:
       - name: Run lint
         run: npm run lint
   build:
-    #needs: [lint, test]
+    needs: [lint, test]
     continue-on-error: true
     strategy:
       matrix:
-        version: [14, 16]
+        node-version: [14, 16]
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Get the repository code
+      - name: Get repository code
         uses: actions/checkout@v3
-      - name: Install Node JS
-        uses: action/setup-node@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.version }}
-      - name: Cache dependencies
+          node-version: ${{ matrix.node-version }}
+      - name: Cache modules
         uses: actions/cache@v3
         with:
           path: ~/.npm
