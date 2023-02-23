@@ -18,10 +18,10 @@ jobs:
       - name: Get the repository code
         uses: actions/checkout@v3
       - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ hashFiles('**/package-lock.json') }}-primes
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ hashFiles('**/package-lock.json') }}-primes
       - name: Install react dependencies
         run: npm ci
       - name: Test application
@@ -32,10 +32,10 @@ jobs:
       - name: Get the repository code
         uses: actions/checkout@v3
       - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ hashFiles('**/package-lock.json') }}-primes
+        uses: actions/cache@v3  
+        with:
+          path: ~/.npm
+          key: ${{ hashFiles('**/package-lock.json') }}-primes
       - name: Install react dependencies
         run: npm ci
       - name: Run lint
@@ -47,10 +47,10 @@ jobs:
       - name: Get the repository code
         uses: actions/checkout@v3
       - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ hashFiles('**/package-lock.json') }}-primes
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ hashFiles('**/package-lock.json') }}-primes
       - name: Install react dependencies
         run: npm ci
       - name: Build app
