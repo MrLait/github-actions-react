@@ -1,9 +1,9 @@
-#вывести в консоль объект контекст
+#${{ expression }} - вывести в консоль объект контекст github action expressions
 name: Print pull request
 on: workflow_dispatch
 jobs:
-  pring:
+  print:
     runs-on: windows-latest
     steps:
       - name: Print context
-        run: echo "${{ github}}"
+        run: echo "${{ toJSON(github) }}"
