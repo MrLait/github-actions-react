@@ -13,6 +13,6 @@ jobs:
         run: npm run build
       - name: Upload artifacts
       - uses: actions/upload-artifact@v3
-          with:
-            name: my-artifact
-            path: path/to/artifact/world.txt
+        with:
+          name: build-artifact
+          path: build
