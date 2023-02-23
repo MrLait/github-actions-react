@@ -3,19 +3,25 @@
 #uses - для использования уже готового action нужно использовать команду uses, а не run
 #npm ci - выполняет тоже что и npm install, но рекомендуется делать npm ci, но обязательно должен присутствовать package-lock
 #needs: 'имя работы' - пзволяет связать работы и запустить их последовательно, а не параллельно
+#paths-ignore: добавить игнорируемый путь
 name: Deploy react app
 on: 
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/workflows/*'
+    #paths-ignore:
+    # - '.github/workflows/*'
 jobs:
   test:
     runs-on: windows-latestasd
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3
+      - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ hashFiles('**/package-lock.json') }}-primes
       - name: Install react dependencies
         run: npm ci
       - name: Test application
@@ -26,6 +32,11 @@ jobs:
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3
+      - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ hashFiles('**/package-lock.json') }}-primes
       - name: Install react dependencies
         run: npm ci
       - name: Run lint
@@ -36,6 +47,11 @@ jobs:
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3
+      - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ hashFiles('**/package-lock.json') }}-primes
       - name: Install react dependencies
         run: npm ci
       - name: Build app
