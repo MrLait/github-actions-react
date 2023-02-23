@@ -3,8 +3,12 @@
 #uses - для использования уже готового action нужно использовать команду uses, а не run
 #npm ci - выполняет тоже что и npm install, но рекомендуется делать npm ci, но обязательно должен присутствовать package-lock
 #needs: 'имя работы' - пзволяет связать работы и запустить их последовательно, а не параллельно
+#git pull origin master забираем изменения из master гитхаба
 name: Deploy react app
-on: push
+on:
+  push:
+    branches:
+      - master
 jobs:
   test:
     runs-on: windows-latest
