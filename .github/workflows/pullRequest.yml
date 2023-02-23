@@ -1,9 +1,11 @@
 #${{ expression }} - вывести в консоль объект контекст github action expressions
 name: Print pull request
-on: workflow_dispatch
+on: #[workflow_dispatch, pull_request]
+  workflow_dispatch:
+  pull_request: [opened, edited, reopened]
 jobs:
   print:
     runs-on: windows-latest
     steps:
       - name: Print context
-        run: echo ${{ toJSON(github) }}
+        run: echo ${{ toJSON(github.event) }}
