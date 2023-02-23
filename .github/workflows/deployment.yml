@@ -2,6 +2,7 @@
 #checkout - action который предоставлен командой github и позволяет получить исходный код на сервере 
 #uses - для использования уже готового action нужно использовать команду uses, а не run
 #npm ci - выполняет тоже что и npm install, но рекомендуется делать npm ci, но обязательно должен присутствовать package-lock
+#needs: 'имя работы' - пзволяет связать работы и запустить их последовательно, а не параллельно
 name: Deploy react app
 on: push
 jobs:
@@ -16,6 +17,7 @@ jobs:
         run: npm run test
   lint:
     runs-on: windows-latest
+    needs: test
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3
@@ -25,6 +27,7 @@ jobs:
         run: npm run lint
   build:
     runs-on: windows-latest
+    needs: lint
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3
