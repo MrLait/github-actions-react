@@ -4,7 +4,12 @@
 #npm ci - выполняет тоже что и npm install, но рекомендуется делать npm ci, но обязательно должен присутствовать package-lock
 #needs: 'имя работы' - пзволяет связать работы и запустить их последовательно, а не параллельно
 name: Deploy react app
-on: push
+on: 
+  push:
+    branches:
+      - master
+    path-ignore:
+      - '.github/workflows/*'
 jobs:
   test:
     runs-on: windows-latest
