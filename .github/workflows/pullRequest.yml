@@ -1,0 +1,9 @@
+#вывести в консоль объект контекст
+name: Print pull request
+on: workflow_dispatch
+jobs:
+  pring:
+    runs-on: windows-latest
+    steps:
+      - name: Print context
+        run: echo "${{ github}}"
