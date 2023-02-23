@@ -9,4 +9,4 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Print context
-        run: echo "${{ toJSON(github.event) }}"
+        run: echo "${{toJSON(github.event)}}"
